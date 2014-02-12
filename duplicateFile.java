@@ -26,19 +26,15 @@ public class duplicateFile {
 
     }
 
-    String[] FileNumberToName(int b, File directory) {
+    String[] FileNumberToName(int dupFileNumber, File directory) throws IOException {
         File[] files = directory.listFiles();
-        String[] duplicates = new String[b];
+        String[] duplicates = new String[dupFileNumber];
         int y = 0;
         for(int i = 0; i < files.length; i++) {
 
-            String temp = files[i].toString();
-
             for(int x = 0; x < files.length; x++) {
-                String temp2 = files[i+1].toString();
-                if(temp == temp2)
-                {
-                    duplicates[y] = temp;
+                if(compareTwoFiles(files[i].toString(),files[i+1].toString()) == true) {
+                    duplicates[y] = files[i].toString();
                 }
             }
         }

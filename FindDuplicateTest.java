@@ -62,12 +62,13 @@ public class FindDuplicateTest {
 
     @Test
 
-    public void testFileNumberToName() {
+    public void testFileNumberToName() throws IOException {
         File directory = new File("c:\\Javatest");
-        File[] files = directory.listFiles();
-
-
-
+        int correctNumberOfDuplicates = 3;
+        duplicateFile d = new duplicateFile();
+        String[] fileList = d.FileNumberToName(correctNumberOfDuplicates,directory);
+        int actual = fileList.length;
+        assertEquals(actual,correctNumberOfDuplicates);
         }
     }
 
